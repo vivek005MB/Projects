@@ -22,6 +22,8 @@ def load_data(csv_path):
     random_seed = config['random_seed']
     batch_size = config['batch_size']
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    vocab_size = config['vocab_size']
+    
     # text(feature) Processing pipeline
     text = torchtext.legacy.data.Field(
         tokenize = 'spacy',
