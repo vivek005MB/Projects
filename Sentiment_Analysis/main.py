@@ -43,3 +43,32 @@ optimizer = optim.Adam(model.parameters(),lr=config['learning_rate'])
 
 # fit the model
 history = fit(model,data,config,optimizer,criterion,callback='early_stopping',device=device)
+
+# plotting
+train_loss = history[0]
+val_loss = history[2]
+train_acc = history[1]
+val_acc = history[3]
+
+loss_plot_name = 'train_val_loss'
+acc_plot_name = 'train_val_acc'
+
+# loss plots
+plt.figure(figsize=(10, 7))
+plt.plot(train_loss, color='orange', label='train loss')
+plt.plot(val_loss, color='red', label='validataion loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.savefig(f"./{loss_plot_name}.png")
+plt.show()
+
+# accuracy plots
+plt.figure(figsize=(10, 7))
+plt.plot(train_acc, color='green', label='train accuracy')
+plt.plot(val_acc, color='blue', label='validataion accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.savefig(f"./{acc_plot_name}.png")
+plt.show()
