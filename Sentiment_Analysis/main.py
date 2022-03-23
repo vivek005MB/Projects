@@ -72,3 +72,22 @@ plt.ylabel('Accuracy')
 plt.legend()
 plt.savefig(f"./Plots/{acc_plot_name}.png")
 plt.show()
+
+# Inference
+import spacy
+nlp = spacy.blank("en")
+
+def predict_sentiment(model, sentence):
+
+    model.eval()
+    tokenized = [tok.text for tok in nlp.tokenizer(sentence)]
+    indexed = [text.vocab.stoi[t] for t in tokenized]
+    length = [len(indexed)]
+    tensor = torch.LongTensor(indexed).to(DEVICE)
+    tensor = tensor.unsqueeze(1)
+    length_tensor = torch.LongTensor(length)
+    prediction = torch.nn.functional.softmax(model(tensor), dim=1)
+    return prediction[0][0].item()
+
+print('Probability positive:')
+predict_sentiment(model, "what a waste of time and money")
