@@ -42,7 +42,7 @@ optimizer = optim.Adam(model.parameters(),lr=config['learning_rate'])
 
 
 # fit the model
-history = fit(model,data,config,optimizer,criterion,callback='early_stopping',device=device)
+history = fit(model,data,config,optimizer,criterion,callback=None,device=device)
 
 # plotting
 train_loss = history[0]
