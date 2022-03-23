@@ -1,0 +1,14 @@
+{
+  "out_dim": 2,
+  "n_layers": 1,
+  "hidden_dim": 256,
+  "batch_size": 128,
+  "is_bidirectional": true,
+  "dropout": 0.3,
+  "gpu": true,
+  "embedding_dim": 300,
+  "num_epochs": 1,
+  "learning_rate": 0.005,
+  "random_seed": 123,
+  "vocab_size": 25000
+}
